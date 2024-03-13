@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px;
+}
+th{
+    padding: 10px;
+    background-color: green;
+    border: 1px solid gray;
+    color: white;
+}
+td{
+    border: 1px solid gray;
+    padding: 7px;
+    text-align: center;
+}
+tr:hover{
+    background-color: aliceblue;
+}
+caption{
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 600;
+
+}
