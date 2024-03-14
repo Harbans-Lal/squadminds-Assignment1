@@ -96,6 +96,7 @@ console.log('maxproduct of 20 *20 grid is:',maxProd);
 
 
 //4.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//triangular number is: 1, 3, 6, 10, 15, 21, 28, 36, 45...............
 function generateTriangularNumber(n) {
     return (n * (n + 1)) / 2;
 }
@@ -112,3 +113,33 @@ for(let i = 0; i<= num; i++){
    }
 }
 console.log('divisor count is:',countDivisor);
+
+
+//4.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let countDivisor2  =0;
+let allTriNum = [];
+function countTriNumDiv(n){
+    for(let i=1; i<=n; i++){
+        let sum = generateTriangularNumber(i);
+        allTriNum.push(sum);
+    }
+}
+countTriNumDiv(500);
+console.log('triangular number>>>>>>>>',allTriNum);
+let firstLargest = 0;
+for(let val of allTriNum){
+    if(countDivisor2===500){
+        break;
+    }else{
+        firstLargest = val
+        for(i=1; i<=val; i++){
+            if(val%i==0){
+                countDivisor2++;
+                break;
+            }
+        }
+    }
+}
+
+console.log(' first triangular number with over 500 divisors is>>>>>>>>>>>>>' ,firstLargest);
+console.log('count divisor>>>>>>>>>>>',countDivisor2);
