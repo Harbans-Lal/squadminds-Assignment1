@@ -107,7 +107,7 @@ for(let val of allTriNum){
 console.log(' the triangular number is >>>>>>>>>>>>>' ,firstLargest);
 console.log('count divisor>>>>>>>>>>>',countDivisor2);
 
-// get  the number of  divisors>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// get  the number of  divisors >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let storeDivisor = [];
 function finndDiviser(n){
     for(let i=1; i<= Math.sqrt(n); i++){
@@ -125,23 +125,20 @@ console.log('all divisor number is>>>>>>>>>>', allDivOfTheNUm);
 
 
 
-//factorization of the number>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>...
-function primeFactorization(num) {
-    const factors = [];
 
-    for (let factor = 2; factor * factor <= num; factor++) {
-        while (num % factor === 0) {
-            factors.push(factor);
-            num /= factor;
+//find the prime Factor of the number  >>>>>>>>>>>>>>>>>>>>>>>>
+function findPrimFactor(num){
+    let factors = [];
+    for(i=2; i<=num; i++){
+        while(num%i==0){
+            factors.push(i);
+            num /= i;
         }
     }
 
-    if (num > 1) {
-        factors.push(num);
-    }
     return factors;
-}
+} 
 
+const factors2 = findPrimFactor(firstLargest);
+console.log("Prime factors of", firstLargest, "are:", factors2);
 
-const factors = primeFactorization(firstLargest);
-console.log("Prime factors of", firstLargest, "are:", factors);
