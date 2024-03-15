@@ -9,8 +9,7 @@ getData();
 
 
 function rednerData(data){
-    
- data.forEach(item => {
+ data.slice(0,7).forEach(item => {
     let tBody = document.getElementById('tBody');
     let tr = document.createElement('tr');
     let data = `<td>${item.id} </td> 
@@ -21,7 +20,6 @@ function rednerData(data){
  })
 }
 
-
 //question no. 2  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..
 let largerPal = 0;
 for (let i = 100; i < 1000; i++) {
@@ -30,9 +28,10 @@ for (let i = 100; i < 1000; i++) {
         // Check if product is a palindrome
         // Update the largest palindrome found
         let isPalin = numberIsPalin(product);
-
+        
          if(isPalin && product > largerPal) {
             largerPal = product;
+            
         }
     }
 }
@@ -40,7 +39,7 @@ console.log('largest palindrom product is:',largerPal);
 
 function numberIsPalin(n){
   let revNum = Number(n.toString().split('').reverse().join(''));
-        if(revNum == n){
+        if(revNum === n){
             return true;
         }else{
             return false;
@@ -53,46 +52,6 @@ if(isPalin){
 }else{
     console.log('it is not palin');
 }
-
-
-
-//3.>>>>>>>>>>>>> largest product in the gridd>>>>>>>>>>>>>>>>>>>>>>>
-let grid = [[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,40,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]];
-
-console.log(grid);
-
-let maxProd = 0;
-for (let row = 0; row < 20; row++) {
-    for (let col = 0; col < 20; col++) {
-    // Calculate products in all directions and track maximum
-        const product  =grid[row][col] * grid[row][col];
-        if(maxProd < product){
-            maxProd = product;
-        }
-    }
-   }
-console.log('maxproduct of 20 *20 grid is:',maxProd);
-
-
 
 
 //4.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -115,31 +74,76 @@ for(let i = 0; i<= num; i++){
 console.log('divisor count is:',countDivisor);
 
 
+
 //4.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let countDivisor2  =0;
 let allTriNum = [];
-function countTriNumDiv(n){
+function countTriNumDiv(n){ 
     for(let i=1; i<=n; i++){
         let sum = generateTriangularNumber(i);
         allTriNum.push(sum);
     }
 }
-countTriNumDiv(500);
-console.log('triangular number>>>>>>>>',allTriNum);
+countTriNumDiv(100);
+console.log('total triangular numbers are>>>>>>>>',allTriNum);
+
+
 let firstLargest = 0;
+//count the total divisror>>>>>>>>>>>>>>>>>>>>>>
 for(let val of allTriNum){
-    if(countDivisor2===500){
-        break;
+    if(countDivisor2===500){ 
+       console.log("it has more than 500  divisors",firstLargest);
     }else{
         firstLargest = val
+        countDivisor2 = 0
         for(i=1; i<=val; i++){
-            if(val%i==0){
+            if(val%i==0 ){
                 countDivisor2++;
-                break;
             }
         }
     }
 }
 
-console.log(' first triangular number with over 500 divisors is>>>>>>>>>>>>>' ,firstLargest);
+console.log(' the triangular number is >>>>>>>>>>>>>' ,firstLargest);
 console.log('count divisor>>>>>>>>>>>',countDivisor2);
+
+// get  the number of  divisors>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let storeDivisor = [];
+function finndDiviser(n){
+    for(let i=1; i<= Math.sqrt(n); i++){
+        if(n%i== 0){
+            storeDivisor.push(i);
+            if(n/i !==i){
+                storeDivisor.push(n/i);
+            }
+        }
+    }
+    return storeDivisor;
+}
+let allDivOfTheNUm = finndDiviser(firstLargest);
+
+//check prime no out of the whole divisors collection>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let primeCollection = [];
+function checkPrimeNumer(n){
+    for(let val of n){
+        let primeVal = isPrime(val);
+        if(primeVal){
+            primeCollection.push(val);
+        }
+    }
+}
+checkPrimeNumer(allDivOfTheNUm)
+let primeFactorization  = primeCollection.reduce((acc, num) => acc*num, 1);
+
+console.log('prime number is>>>>>>>>>>>>>>>>>>',primeCollection);
+console.log('Prime factorization of the number is >>>>>>>>>', primeFactorization);
+
+//check no. is Prime or not function>>>>>>>>>>>>>>>>>>
+function isPrime(num){
+    for(let i=2; i< Math.sqrt(num)+1; i++){
+        if(num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
