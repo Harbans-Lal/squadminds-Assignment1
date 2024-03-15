@@ -121,29 +121,27 @@ function finndDiviser(n){
     return storeDivisor;
 }
 let allDivOfTheNUm = finndDiviser(firstLargest);
+console.log('all divisor number is>>>>>>>>>>', allDivOfTheNUm);
 
-//check prime no out of the whole divisors collection>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let primeCollection = [];
-function checkPrimeNumer(n){
-    for(let val of n){
-        let primeVal = isPrime(val);
-        if(primeVal){
-            primeCollection.push(val);
+
+
+//factorization of the number>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>...
+function primeFactorization(num) {
+    const factors = [];
+
+    for (let factor = 2; factor * factor <= num; factor++) {
+        while (num % factor === 0) {
+            factors.push(factor);
+            num /= factor;
         }
     }
-}
-checkPrimeNumer(allDivOfTheNUm)
-let primeFactorization  = primeCollection.reduce((acc, num) => acc*num, 1);
 
-console.log('prime number is>>>>>>>>>>>>>>>>>>',primeCollection);
-console.log('Prime factorization of the number is >>>>>>>>>', primeFactorization);
-
-//check no. is Prime or not function>>>>>>>>>>>>>>>>>>
-function isPrime(num){
-    for(let i=2; i< Math.sqrt(num)+1; i++){
-        if(num % i == 0) {
-            return false;
-        }
+    if (num > 1) {
+        factors.push(num);
     }
-    return true;
+    return factors;
 }
+
+
+const factors = primeFactorization(firstLargest);
+console.log("Prime factors of", firstLargest, "are:", factors);
